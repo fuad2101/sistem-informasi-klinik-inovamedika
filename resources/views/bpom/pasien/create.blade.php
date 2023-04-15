@@ -132,7 +132,7 @@
                 </div>
 
                 </div>
-                    <button class="btn btn-primary mb-5">Tambah Pasien</button>
+                    <button class="btn btn-primary mb-5 ml-3">Tambah Pasien</button>
                 </form>
 
 

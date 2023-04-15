@@ -87,7 +87,7 @@
             data-parent="#accordionSidebar"
           >
             <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header">Kategori Pegawai</h6>
+              <h6 class="collapse-header">Menu Pegawai</h6>
               <a class="collapse-item" href="{{url('/pegawai')}} ">Data Pegawai</a>
               <a class="collapse-item" href="{{url('/pegawai/create')}}">Tambah Pegawai</a>
             </div>
@@ -114,7 +114,7 @@
             data-parent="#accordionSidebar"
           >
             <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header">Pasien</h6>
+              <h6 class="collapse-header">Menu Pasien</h6>
               <a class="collapse-item" href="{{url('/pasien')}}">Data Pasien</a>
               <a class="collapse-item" href="{{url('/pasien/create')}}">Tambah Pasien</a>
               {{-- <a class="collapse-item" href=" {{url('/nodin')}} ">Nota Dinas</a> --}}
@@ -194,7 +194,7 @@
             aria-controls="collapsePages"
           >
             <i class="fas fa-fw fa-folder"></i>
-            <span>Laporan Jumlah Pasien</span>
+            <span>Laporan</span>
           </a>
           <div
             id="collapsePages"
@@ -203,16 +203,8 @@
             data-parent="#accordionSidebar"
           >
             <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header">Login Screens:</h6>
-              <a class="collapse-item" href="login.html">Login</a>
-              <a class="collapse-item" href="register.html">Register</a>
-              <a class="collapse-item" href="forgot-password.html"
-                >Forgot Password</a
-              >
-              <div class="collapse-divider"></div>
-              <h6 class="collapse-header">Other Pages:</h6>
-              <a class="collapse-item" href="404.html">404 Page</a>
-              <a class="collapse-item" href="blank.html">Blank Page</a>
+              <h6 class="collapse-header">Jenis Laporan</h6>
+              <a class="collapse-item" href="login.html">Laporan Jumlah Pasien</a>
             </div>
           </div>
         </li>
@@ -544,7 +536,7 @@
         <footer class="sticky-footer bg-white">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>Copyright &copy; BPOM Mamuju @php date('Y') @endphp </span>
+              <span>Copyright &copy; Sistem Informasi Klinik @php date('Y') @endphp </span>
             </div>
           </div>
         </footer>
