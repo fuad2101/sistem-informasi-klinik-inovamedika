@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pasiens', function (Blueprint $table) {
-            // $table->id();
-            $table->string('no_mr', 20)->unique()->default('text');
+            $table->id();
+            $table->string('no_mr', 20)->unique()->default('N/A');
             $table->date('tanggal_daftar');
             $table->string('nama_pasien', 100);
             $table->date('tgl_lahir');
@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('kecamatan')->nullable();
             $table->string('kelurahan')->nullable();
             $table->string('kota')->nullable();
-            $table->integer('tel',15)->unsigned();
+            $table->text('tel',15);
             $table->timestamps();
         });
     }

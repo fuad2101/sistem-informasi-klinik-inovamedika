@@ -77,7 +77,8 @@
             aria-expanded="true"
             aria-controls="collapseTwo"
           >
-            <i class="fas fa-fw fa-cog"></i>
+          <i class="fa fa-user" aria-hidden="true"></i>
+            {{-- <i class="fas fa-fw fa-cog"></i> --}}
             <span>PEGAWAI</span>
           </a>
           <div
@@ -104,7 +105,8 @@
             aria-expanded="true"
             aria-controls="collapsePasien"
           >
-            <i class="fas fa-fw fa-wrench"></i>
+          <i class="fa fa-ambulance" aria-hidden="true"></i>
+            {{-- <i class="fas fa-fw fa-wrench"></i> --}}
             <span>PASIEN</span>
           </a>
           <div
@@ -135,7 +137,7 @@
             aria-expanded="true"
             aria-controls="collapseTindakan"
           >
-            <i class="fas fa-fw fa-wrench"></i>
+          <i class="fa fa-heart" aria-hidden="true"></i>
             <span>TIND. DAN OBAT</span>
           </a>
           <div
@@ -147,7 +149,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Input Tindakan Dan Obat</h6>
               <a class="collapse-item disabled" href="{{url('/tindakan')}}" >Tindakan</a>
-              <a class="collapse-item disabled" href="#" >Daftar Obat</a>
+              <a class="collapse-item disabled" href="{{url('/obat')}}" >Daftar Obat</a>
             </div>
           </div>
         </li>
@@ -161,8 +163,8 @@
             aria-expanded="true"
             aria-controls="collapseUtilities"
           >
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>PEMBAYARAN</span>
+          <i class="fa fa-calculator" aria-hidden="true"></i>
+            <span>TRANSAKSI</span>
           </a>
           <div
             id="collapseUtilities"
@@ -171,8 +173,8 @@
             data-parent="#accordionSidebar"
           >
             <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header">Menu Pembayaran</h6>
-              <a class="collapse-item disabled" href="{{url('/pembayaran')}} " >Pembayaran Pasien</a>
+              <h6 class="collapse-header">Menu Transaksi</h6>
+              <a class="collapse-item disabled" href="{{url('/transaksi')}} " >Transaksi Pasien</a>
             </div>
           </div>
         </li>
@@ -204,7 +206,8 @@
           >
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Jenis Laporan</h6>
-              <a class="collapse-item" href="login.html">Laporan Jumlah Pasien</a>
+              <a class="collapse-item" href="{{url('/laporan/pasien')}}">Laporan Pasien</a>
+              <a class="collapse-item" href="{{url('/laporan/karyawan')}}">Laporan Karyawan</a>
             </div>
           </div>
         </li>
@@ -533,13 +536,15 @@
           @yield('content')
 
           <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright &copy; Sistem Informasi Klinik @php date('Y') @endphp </span>
-            </div>
+          <div class="row col">
+              <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                  <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; Sistem Informasi Klinik @php date('Y') @endphp </span>
+                  </div>
+                </div>
+              </footer>
           </div>
-        </footer>
         <!-- End of Footer -->
       </div>
       <!-- End of Content Wrapper -->
@@ -615,5 +620,8 @@
     <!-- Page level custom scripts -->
     <script src="/js/demo/chart-area-demo.js"></script>
     <script src="/js/demo/chart-pie-demo.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    @yield('footer-addons')
+
   </body>
 </html>

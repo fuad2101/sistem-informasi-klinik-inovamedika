@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\tindakans;
+use App\Models\pasiens;
 
 class tindakanController extends Controller
 {
@@ -13,7 +15,7 @@ class tindakanController extends Controller
      */
     public function index()
     {
-        return view('bpom.tindakan.index');
+        return view('bpom.tindakan.index',['tindakans'=>tindakans::all()]);
     }
 
     /**
@@ -23,7 +25,9 @@ class tindakanController extends Controller
      */
     public function create()
     {
-        //
+        $data = pasiens::all();
+        // dd($data);
+        return view('bpom.tindakan.create',['data' => $data]);
     }
 
     /**
@@ -34,7 +38,16 @@ class tindakanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        tindakans::create([
+            'mr_id'=>$request->no_rm,
+            'tanggal_tindakan'=>$request->tanggal_tindakan,
+            'nama_pasien'=>$request->nama_pasien,
+            'tgl_masuk'=>$request->tgl_masuk,
+            'tindakan'=>$request->tindakan,
+        ]);
+
+        return view('bpom.tindakan.index',['tindakans'=>tindakans::all()]);
+
     }
 
     /**

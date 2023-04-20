@@ -7,39 +7,45 @@
             <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
-              <h1 class="h3 mb-0 text-gray-800">Tambah Pegawai</h1>
+              <h1 class="h3 mb-0 text-gray-800">Tindakan Pasien</h1>
               <a
                 href="#"
                 class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-                ><i class="fas fa-download fa-sm text-white-50"></i> Tambah Pegawai</a
+                ><i class="fas fa-download fa-sm text-white-50"></i> Tambah Tindakan</a
               >
             </div>
-
-                <form action="" method="post" class="">
+                <form action="{{route('tindakan.store')}}" method="post" class="">
+                    @csrf
                 <div class="col-md-4 mb-3">
-                    <label for="nama" class="form-label">Nama Pegawai</label>
-                    <input type="text" name="" id="nama" class="form-control">
-
+                    <label for="no_rm" class="form-label">No.RM</label>
+                    <select class="form-control" name="no_rm" id="">
+                        @forelse ($data as $item)
+                            <option value="{{$item->no_mr}}">{{$item->no_mr}} - {{$item->nama_pasien}}  </option>
+                        @empty
+                            <option value="">No Data</option>
+                        @endforelse
+                    </select>
                 </div>
                 <div class="col-md-4 mb-3">
-                    <label for="profesi" class="form-label">Profesi</label>
-                    <input type="text" name="" id="profesi" class="form-control">
-
+                    <label for="tanggal_tindakan" class="form-label">Tanggal Tindakan</label>
+                    <input class="form-control" type="date" name="tanggal_tindakan" id="">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="nama_pasien" class="form-label">Nama Pasien</label>
+                    <input class="form-control" type="text" name="nama_pasien" id="" value="">
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="tgl_masuk" class="form-label">Tanggal Masuk</label>
-                    <input type="date" name="" id="tgl_masuk" class="form-control">
+                    <input class="form-control" type="date" name="tgl_masuk" id="">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="tindakan" class="form-label">Tindakan Pada Pasien</label>
+                    <textarea class="form-control" name="tindakan" id="tindakan" cols="30" rows="10"></textarea>
+                </div>
 
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label for="tgl_keluar" class="form-label">Tanggal Keluar</label>
-                    <input type="date" name="" id="tgl_keluar" class="form-control">
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label for="alamat" class="form-label">Alamat</label>
-                    <input class="form-control" type="text" name="alamat" id="alamat">
-                </div>
-                    <button class="btn btn-primary mb-5">Tambah Pegawai</button>
+
+
+                    <button class="btn btn-primary mb-5">Tambah Tindakan</button>
                 </form>
 
 

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\transaksi;
 use Illuminate\Http\Request;
 use App\Models\pasiens;
 
-class pasienController extends Controller
+class TransaksiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,8 @@ class pasienController extends Controller
      */
     public function index()
     {
-        return view('bpom.pasien.index',['pasiens'=>pasiens::all()]);
+        $data = transaksi::all();
+        return view('bpom.transaksi.index',['data'=>$data]);
     }
 
     /**
@@ -24,7 +26,8 @@ class pasienController extends Controller
      */
     public function create()
     {
-        return view('bpom.pasien.create');
+        $data = pasiens::all();
+        return view('bpom.transaksi.create',['data'=>$data]);
     }
 
     /**
@@ -35,34 +38,25 @@ class pasienController extends Controller
      */
     public function store(Request $request)
     {
-        $foo = pasiens::create([
-            'no_mr'=>$request->no_mr,
-            'tanggal_daftar'=>$request->tanggal_daftar,
-            'nama_pasien'=>$request->nama_pasien,
-            'tgl_lahir'=>$request->tgl_lahir,
-            'jns_klm'=>$request->jns_klm,
-            'agama'=>$request->agama,
-            'pendidikan'=>$request->pendidikan,
-            'alamat'=>$request->alamat,
-            'kecamatan'=>$request->kecamatan,
-            'kelurahan'=>$request->kelurahan,
-            'kota'=>$request->kota,
-            'tel'=>$request->tel,
+        transaksi::create([
+            'kode_trx'=>$request->kode_trx,
+            'no_rm'=>$request->no_rm,
+            'nama_pasien'=> $request->nama_pasien,
+            'type'=>$request->type,
+            'total'=>$request->total,
         ]);
 
-        // dd($foo);
-
-        return view('bpom.pasien.index',['pasiens'=>pasiens::all()]);
+        return view('bpom.transaksi.index',['data'=> transaksi::all()]);
 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(transaksi $transaksi)
     {
         //
     }
@@ -70,10 +64,10 @@ class pasienController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(transaksi $transaksi)
     {
         //
     }
@@ -82,10 +76,10 @@ class pasienController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, transaksi $transaksi)
     {
         //
     }
@@ -93,10 +87,10 @@ class pasienController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(transaksi $transaksi)
     {
         //
     }

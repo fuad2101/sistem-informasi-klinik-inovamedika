@@ -9,9 +9,10 @@
             >
               <h1 class="h3 mb-0 text-gray-800">Data Pegawai</h1>
               <a
-                href="#"
-                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-                ><i class="fas fa-download fa-sm text-white-50"></i> Tambah Pegawai</a
+                href="{{url('/export/pdf')}}"
+                target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                ><i class="fa fa-download" aria-hidden="true"></i> Export PDF</a
+
               >
             </div>
 
@@ -50,22 +51,19 @@
                             </tr>
                             </thead>
                             <tbody>
+                                @forelse ($pegawais as $pegawai)
+
                                 <tr>
-                                    <td scope="row">1</td>
-                                    <td>Muhammad Fuad</td>
-                                    <td>Dokter Penanggung Jawab</td>
-                                    <td>19 Maret 2021</td>
-                                    <td>-</td>
-                                    <td>Majalengka</td>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$pegawai->nama_pegawai}}</td>
+                                    <td>{{$pegawai->profesi}}</td>
+                                    <td>{{$pegawai->tanggal_masuk}}</td>
+                                    <td>{{$pegawai->tanggal_keluar}}</td>
+                                    <td>{{$pegawai->alamat}}</td>
                                 </tr>
-                                <tr>
-                                    <td scope="row">2</td>
-                                    <td>Sri Rahmawati</td>
-                                    <td>Dokter Umum</td>
-                                    <td>20 Agustus 2018</td>
-                                    <td>-</td>
-                                    <td>Bogor</td>
-                                </tr>
+                                @empty
+                                <td class="text-center" colspan="6">Tidak ada data</td>
+                                @endforelse
                             </tbody>
                     </table>
                 </div>

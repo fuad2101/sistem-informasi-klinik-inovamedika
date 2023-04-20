@@ -4,10 +4,11 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\pegawais>
  */
-class pegawaiFactory extends Factory
+class pegawaisFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,7 +19,7 @@ class pegawaiFactory extends Factory
     {
         return [
             'nama_pegawai' => fake()->lastName(),
-            'profesi'=>randomElement(['Dokter Umum','Apoteker','Dokter Gigi']),
+            'profesi'=>fake()->randomElement(['Dokter Umum','Apoteker','Dokter Gigi']),
             'tanggal_masuk'=> fake()->date(),
             'alamat'=>fake()->Address(),
         ];

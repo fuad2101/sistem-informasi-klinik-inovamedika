@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\pegawais;
 
 class pegawaiController extends Controller
 {
@@ -13,7 +14,8 @@ class pegawaiController extends Controller
      */
     public function index()
     {
-        return view('bpom.pegawai.index');
+        $pegawais = pegawais::all();
+        return view('bpom.pegawai.index',['pegawais'=>$pegawais]);
     }
 
     /**
@@ -34,7 +36,21 @@ class pegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $foo = $request->tanggal_masuk;
+        // dd($foo);
+
+        pegawais::create([
+            'nama_pegawai'=>$request->nama_pegawai,
+            'profesi'=>$request->profesi,
+            'tanggal_masuk'=>$request->tanggal_masuk,
+            'tanggal_keluar'=>$request->tanggal_keluar,
+            'alamat'=>$request->alamat,
+        ]);
+
+        $pegawais = pegawais::all();
+
+        return view('bpom.pegawai.index',['pegawais'=>$pegawais]);
     }
 
     /**

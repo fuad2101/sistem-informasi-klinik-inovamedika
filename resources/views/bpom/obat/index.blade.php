@@ -7,42 +7,92 @@
             <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
-              <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+              <h1 class="h3 mb-0 text-gray-800">Daftar Obat</h1>
               <a
-                href="#"
+                href="{{url('obat/create')}}"
                 class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-                ><i class="fas fa-download fa-sm text-white-50"></i> Generate
-                Report</a
+                ><i class="fas fa-plus fa-sm text-white-50"></i> Tambah Obat</a
               >
             </div>
 
-            <!-- Content Row -->
-            <div class="row">
-              <!-- Earnings (Monthly) Card Example -->
-              <div class="col-md-6 mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div
-                          class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-                        >
-                          Jumlah Pasien
-                        </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                          30 Pasien
-                        </div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
+            <!-- Topbar Search -->
+            <form
+              class="d-none d-sm-inline-block form-inline navbar-search mb-4"
+            >
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control bg-light border-0 small"
+                  placeholder="Search for..."
+                  aria-label="Search"
+                  aria-describedby="basic-addon2"
+                />
+                <div class="input-group-append">
+                  <button class="btn btn-primary" type="button">
+                    <i class="fas fa-search fa-sm"></i>
+                  </button>
                 </div>
               </div>
+            </form>
+
+            <!-- Content Row -->
+            <div class="row">
+                <div class="col">
+                    <table class="table table-striped table-inverse table-bordered">
+                        <thead class="thead-inverse">
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Jenis Barang</th>
+                                <th scope="col">Jenis Obat</th>
+                                <th scope="col">Nama Obat</th>
+                                <th scope="col">Produsen</th>
+                                <th scope="col">Harga</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($obats as $obat)
+
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$obat->jns_brg}}</td>
+                                    <td>{{$obat->jns_obat}}</td>
+                                    <td>{{$obat->nama}}</td>
+                                    <td>{{$obat->produsen}}</td>
+                                    <td>{{$obat->harga}}</td>
+                                </tr>
+                                @empty
+                                <td class="text-center text-muted" colspan="6">Tidak ada data</td>
+                                @endforelse
+                            </tbody>
+                    </table>
+                </div>
+
 
               <!-- Earnings (Monthly) Card Example -->
-              <div class="col-md-6 mb-4">
+            {{-- <div class="col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                    <div
+                        class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                    >
+                        Jumlah PNS
+                    </div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                        30 Pegawai
+                    </div>
+                    </div>
+                    <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div> --}}
+
+              <!-- Earnings (Monthly) Card Example -->
+              {{-- <div class="col-md-6 mb-4">
                 <div class="card border-left-success shadow h-100 py-2">
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -50,10 +100,10 @@
                         <div
                           class="text-xs font-weight-bold text-success text-uppercase mb-1"
                         >
-                          Pasien Menunggu Tindakan
+                          PPNPN
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
-                          2 Pasien
+                          44 Pegawai
                         </div>
                       </div>
                       <div class="col-auto">
@@ -62,7 +112,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> --}}
 
               <!-- Earnings (Monthly) Card Example -->
               {{-- <div class="col-xl-3 col-md-6 mb-4">
@@ -133,12 +183,12 @@
 
             <!-- Content Row -->
 
-            <div class="row">
+            {{-- <div class="row">
               <!-- Area Chart -->
               <div class="col-xl-8 col-lg-7">
                 <div class="card shadow mb-4">
                   <!-- Card Header - Dropdown -->
-                  {{-- <div
+                  <div
                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
                   >
                     <h6 class="m-0 font-weight-bold text-primary">
@@ -240,76 +290,6 @@
               </div>
             </div> --}}
 
-            <!-- Color System -->
-                {{-- <div class="row">
-                  <div class="col-lg-6 mb-4">
-                    <div class="card bg-primary text-white shadow">
-                      <div class="card-body">
-                        Primary
-                        <div class="text-white-50 small">#4e73df</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 mb-4">
-                    <div class="card bg-success text-white shadow">
-                      <div class="card-body">
-                        Success
-                        <div class="text-white-50 small">#1cc88a</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 mb-4">
-                    <div class="card bg-info text-white shadow">
-                      <div class="card-body">
-                        Info
-                        <div class="text-white-50 small">#36b9cc</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 mb-4">
-                    <div class="card bg-warning text-white shadow">
-                      <div class="card-body">
-                        Warning
-                        <div class="text-white-50 small">#f6c23e</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 mb-4">
-                    <div class="card bg-danger text-white shadow">
-                      <div class="card-body">
-                        Danger
-                        <div class="text-white-50 small">#e74a3b</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 mb-4">
-                    <div class="card bg-secondary text-white shadow">
-                      <div class="card-body">
-                        Secondary
-                        <div class="text-white-50 small">#858796</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 mb-4">
-                    <div class="card bg-light text-black shadow">
-                      <div class="card-body">
-                        Light
-                        <div class="text-black-50 small">#f8f9fc</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 mb-4">
-                    <div class="card bg-dark text-white shadow">
-                      <div class="card-body">
-                        Dark
-                        <div class="text-white-50 small">#5a5c69</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> --}}
-
-
             <!-- Content Row -->
             {{-- <div class="row">
               <!-- Content Column -->
@@ -388,7 +368,74 @@
                   </div>
                 </div>
 
-
+                <!-- Color System -->
+                <div class="row">
+                  <div class="col-lg-6 mb-4">
+                    <div class="card bg-primary text-white shadow">
+                      <div class="card-body">
+                        Primary
+                        <div class="text-white-50 small">#4e73df</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 mb-4">
+                    <div class="card bg-success text-white shadow">
+                      <div class="card-body">
+                        Success
+                        <div class="text-white-50 small">#1cc88a</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 mb-4">
+                    <div class="card bg-info text-white shadow">
+                      <div class="card-body">
+                        Info
+                        <div class="text-white-50 small">#36b9cc</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 mb-4">
+                    <div class="card bg-warning text-white shadow">
+                      <div class="card-body">
+                        Warning
+                        <div class="text-white-50 small">#f6c23e</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 mb-4">
+                    <div class="card bg-danger text-white shadow">
+                      <div class="card-body">
+                        Danger
+                        <div class="text-white-50 small">#e74a3b</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 mb-4">
+                    <div class="card bg-secondary text-white shadow">
+                      <div class="card-body">
+                        Secondary
+                        <div class="text-white-50 small">#858796</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 mb-4">
+                    <div class="card bg-light text-black shadow">
+                      <div class="card-body">
+                        Light
+                        <div class="text-black-50 small">#f8f9fc</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 mb-4">
+                    <div class="card bg-dark text-white shadow">
+                      <div class="card-body">
+                        Dark
+                        <div class="text-white-50 small">#5a5c69</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
               <div class="col-lg-6 mb-4">
                 <!-- Illustrations -->
@@ -447,8 +494,6 @@
                 </div>
               </div>
             </div> --}}
-
-
           </div>
           <!-- /.container-fluid -->
         </div>

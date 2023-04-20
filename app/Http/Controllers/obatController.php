@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\obats;
 
 class obatController extends Controller
 {
@@ -13,7 +14,7 @@ class obatController extends Controller
      */
     public function index()
     {
-        //
+        return view('bpom.obat.index',['obats'=>obats::all()]);
     }
 
     /**
@@ -23,7 +24,7 @@ class obatController extends Controller
      */
     public function create()
     {
-        //
+        return view('bpom.obat.create');
     }
 
     /**
@@ -34,7 +35,15 @@ class obatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        obats::create([
+            'jns_brg'=>$request->jns_brg,
+            'jns_obat'=>$request->jns_obat,
+            'nama'=>$request->nama,
+            'produsen'=>$request->produsen,
+            'harga'=>$request->harga,
+        ]);
+
+        return view('bpom.obat.index',['obats'=>obats::all()]);
     }
 
     /**

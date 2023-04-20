@@ -8,19 +8,15 @@
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
               <h1 class="h3 mb-0 text-gray-800">Tambah Pasien</h1>
-              <a
-                href="#"
-                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-                ><i class="fas fa-download fa-sm text-white-50"></i> Tambah Pasien</a
-              >
             </div>
 
-                <form action="" method="post" class="">
+                <form action="{{route('pasien.store')}}" method="post" class="">
+                    @csrf
 
                 <div class="row">
                     <div class="col-md-2 mb-3">
                         <label for="nama" class="form-label">No. MR</label>
-                        <input type="text" name="" id="nama" class="form-control">
+                        <input type="text" name="no_mr" id="nama" class="form-control" >
                     </div>
                 </div>
 
@@ -28,13 +24,13 @@
                 <hr>
                 <div class="row">
                     <div class="col-md-2 mb-3">
-                        <label for="nama" class="form-label">Nama Pasien</label>
-                        <input type="text" name="" id="nama" class="form-control">
+                        <label for="nama_pasien" class="form-label">Nama Pasien</label>
+                        <input type="text" name="nama_pasien" id="nama_pasien" class="form-control" >
                     </div>
 
                     <div class="col-md-2 mb-3">
                         <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
-                        <input class="form-control" type="text" name="tempat_lahir" id="tempat_lahir">
+                        <input class="form-control" type="text" name="tempat_lahir" id="tempat_lahir" >
                     </div>
 
                     <div class="col-md-2 mb-3">
@@ -43,20 +39,20 @@
                     </div>
 
                     <div class="col-md-2 mb-3">
-                        <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                        <select class="form-control" name="jenis_kelamin" id="jenis_kelamin">
-                            <option value="laki">Laki-laki</option>
-                            <option value="laki">Perempuan</option>
+                        <label for="jns_klm" class="form-label">Jenis Kelamin</label>
+                        <select class="form-control" name="jns_klm" id="jns_klm">
+                            <option value="L">Laki-laki</option>
+                            <option value="P">Perempuan</option>
                         </select>
                     </div>
 
                     <div class="col-md-4 mb-3">
                         <label for="agama" class="form-label">Agama</label>
-                        <select class="form-control" name="" id="">
-                            <option value="">Islam</option>
-                            <option value="">Kristen</option>
-                            <option value="">Hindu</option>
-                            <option value="">Budha</option>
+                        <select class="form-control" name="agama" id="">
+                            <option value="Islam">Islam</option>
+                            <option value="Kristen">Kristen</option>
+                            <option value="Hindu">Hindu</option>
+                            <option value="Budha">Budha</option>
                         </select>
                     </div>
 
@@ -69,7 +65,7 @@
 
                     <div class="col-md-4 mb-3">
                         <label for="jalan" class="form-label">Jalan</label>
-                        <input class="form-control" type="text" name="jalan" id="jalan">
+                        <input class="form-control" type="text" name="jalan" id="jalan" >
                     </div>
 
 
@@ -86,17 +82,17 @@
 
                     <div class="col-md-2 mb-3">
                         <label for="kecamatan" class="form-label">Kecamatan</label>
-                        <input class="form-control" type="text" name="kecamatan" id="kecamatan">
+                        <input class="form-control" type="text" name="kecamatan" id="kecamatan" >
                     </div>
 
                     <div class="col-md-2 mb-3">
-                        <label for="Kelurahan" class="form-label">Kelurahan</label>
-                        <input class="form-control" type="text" name="Kelurahan" id="Kelurahan">
+                        <label for="kelurahan" class="form-label">kelurahan</label>
+                        <input class="form-control" type="text" name="kelurahan" id="Kelurahan" >
                     </div>
 
                     <div class="col-md-2 mb-3">
                         <label for="kota" class="form-label">Kota</label>
-                        <input class="form-control" type="text" name="kota" id="kota">
+                        <input class="form-control" type="text" name="kota" id="kota" >
                     </div>
 
                 </div>
@@ -107,26 +103,26 @@
                 <div class="row">
 
                     <div class="col mb-3">
-                        <label for="telp" class="form-label">Telepon</label>
-                        <input class="form-control" type="text" name="" id="" is-number>
+                        <label for="tel" class="form-label">Telepon</label>
+                        <input class="form-control" type="text" name="tel" id="tel" is-number>
                     </div>
 
                     <div class="col mb-3">
                         <label for="pendidikan" class="form-label">Pendidikan</label>
-                        <select class="form-control" name="" id="">
-                            <option value="">SD</option>
-                            <option value="">SLTP</option>
-                            <option value="">SLTA</option>
-                            <option value="">Diploma</option>
-                            <option value="">S1</option>
-                            <option value="">S2</option>
-                            <option value="">S3</option>
+                        <select class="form-control" name="pendidikan" id="">
+                            <option value="SD">SD</option>
+                            <option value="SLTP">SLTP</option>
+                            <option value="SLTA">SLTA</option>
+                            <option value="Diploma">Diploma</option>
+                            <option value="S1">S1</option>
+                            <option value="S2">S2</option>
+                            <option value="S3">S3</option>
                         </select>
                     </div>
 
                     <div class="col-md-4 mb-3">
-                        <label for="tgl_daftar" class="form-label">Tanggal Daftar</label>
-                        <input class="form-control" type="date" name="tgl_daftar" id="tgl_daftar">
+                        <label for="tanggal_daftar" class="form-label">Tanggal Daftar</label>
+                        <input class="form-control" type="date" name="tanggal_daftar" id="tgl_daftar">
                     </div>
 
                 </div>

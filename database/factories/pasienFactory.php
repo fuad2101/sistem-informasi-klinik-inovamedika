@@ -17,6 +17,14 @@ class pasienFactory extends Factory
     public function definition()
     {
         return [
+            'no_rm' => $faker->randomNumber(7, true),
+            'tanggal_daftar'=>$faker->date(),
+            'nama_pasien'=> $faker->lastName(),
+            'tgl_lahir'=>$faker->date(),
+            'jns_klm'=>$faker->randomElements(['L','P']),
+            'agama'=>$faker->randomElements(['Islam','Kristen','Hindu','Budha']),
+            'pendidikan'=>$faker->randomElements(['SD','SLTA','SLTP','S1']),
+            'tanggal_tindakan' => $faker->date(),
 
         ];
     }

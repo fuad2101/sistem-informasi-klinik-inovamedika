@@ -9,7 +9,7 @@
             >
               <h1 class="h3 mb-0 text-gray-800">Data Pasien</h1>
                   <a
-                    href="#"
+                    href="{{url('/pasien/create')}}"
                     class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                     ><i class="fas fa-download fa-sm text-white-50"></i> Tambah Pasien</a
                   >
@@ -57,21 +57,28 @@
                             </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>2023-125435</td>
-                                    <td>20-02-2023</td>
-                                    <td>Sri Wahyuni</td>
-                                    <td>15 Agustus 1994</td>
-                                    <td>Perempuan</td>
-                                    <td>Islam</td>
-                                    <td>S1</td>
-                                    <td>Jl. Emmi Saelan</td>
-                                    <td>Binanga</td>
-                                    <td>Simboro</td>
-                                    <td>Mojokerto</td>
-                                    <td>08123456789</td>
-                                </tr>
+
+                                @forelse ($pasiens as $pasien)
+                                    <tr>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$pasien->no_mr}}</td>
+                                        <td>{{$pasien->tanggal_daftar}}</td>
+                                        <td>{{$pasien->nama_pasien}}</td>
+                                        <td>{{$pasien->tgl_lahir}}</td>
+                                        <td>{{$pasien->jns_klm}}</td>
+                                        <td>{{$pasien->agama}}</td>
+                                        <td>{{$pasien->pendidikan}}</td>
+                                        <td>{{$pasien->alamat}}</td>
+                                        <td>{{$pasien->kecamatan}}</td>
+                                        <td>{{$pasien->kelurahan}}</td>
+                                        <td>{{$pasien->kota}}</td>
+                                        <td>{{$pasien->tel}}</td>
+                                    </tr>
+                                @empty
+                                    <td class="text-center" colspan="13">Tidak ada data</td>
+                                @endforelse
+
+
                             </tbody>
                     </table>
                 </div>

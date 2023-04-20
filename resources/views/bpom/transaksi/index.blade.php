@@ -7,11 +7,11 @@
             <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
-              <h1 class="h3 mb-0 text-gray-800">Transaksi Pembayaran</h1>
+              <h1 class="h3 mb-0 text-gray-800">Transaksi Obat</h1>
               <a
-                href="#"
+                href="{{route('transaksi.create')}}"
                 class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-                ><i class="fas fa-download fa-sm text-white-50"></i> Tambah Pembayaran</a
+                ><i class="fas fa-download fa-sm text-white-50"></i> Tambah Transaksi</a
               >
             </div>
 
@@ -50,14 +50,19 @@
                             </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>TRX-2023455489</td>
-                                    <td>2023-125435	</td>
-                                    <td>Muhammad Fuad</td>
-                                    <td>Cash</td>
-                                    <td>457,000</td>
-                                </tr>
+                                {{-- @dd($data) --}}
+                                @forelse ($data as $transaksi )
+                                    <tr>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$transaksi->kode_trx}}</td>
+                                        <td>{{$transaksi->no_rm}}</td>
+                                        <td>{{$transaksi->nama_pasien}}</td>
+                                        <td>{{$transaksi->type}}</td>
+                                        <td>{{$transaksi->total}}</td>
+                                    </tr>
+                                @empty
+                                    <td class="text-center" colspan="6">No Data</td>
+                                @endforelse
                             </tbody>
                     </table>
                 </div>
