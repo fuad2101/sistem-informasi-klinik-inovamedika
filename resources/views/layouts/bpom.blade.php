@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,6 +26,7 @@
 
     <!-- Custom styles for this template-->
     <link href="/css/sb-admin-2.min.css" rel="stylesheet" />
+
   </head>
 
     <body id="page-top">
@@ -67,6 +69,8 @@
         <!-- Heading -->
         <div class="sidebar-heading">Tools</div>
 
+        @can('viewAny',App\Models\pegawais::class)
+
         <!-- Nav Item - Pegawai -->
         <li class="nav-item">
           <a
@@ -95,6 +99,9 @@
           </div>
         </li>
 
+        @endcan
+
+
         <!-- Nav Item - Persuratan -->
         <li class="nav-item">
           <a
@@ -118,7 +125,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Menu Pasien</h6>
               <a class="collapse-item" href="{{url('/pasien')}}">Data Pasien</a>
-              <a class="collapse-item" href="{{url('/pasien/create')}}">Tambah Pasien</a>
+              <a class="collapse-item" href="{{url('/pasien/create')}}">Cek Data Pasien</a>
               {{-- <a class="collapse-item" href=" {{url('/nodin')}} ">Nota Dinas</a> --}}
               {{-- <a class="collapse-item" href="#"
                 >Undangan</a
@@ -174,7 +181,8 @@
           >
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Menu Transaksi</h6>
-              <a class="collapse-item disabled" href="{{url('/transaksi')}} " >Transaksi Pasien</a>
+              <a class="collapse-item disabled" href="{{url('/transaksi')}} " >Cetak Transaksi </a>
+              <a class="collapse-item disabled" href="{{url('/transaksi')}} " >Data Transaksi</a>
             </div>
           </div>
         </li>
@@ -183,6 +191,9 @@
         <hr class="sidebar-divider" />
 
         <!-- Heading -->
+
+        @can('viewAny',App\Models\pegawais::class)
+
         <div class="sidebar-heading">Laporan</div>
 
         <!-- Nav Item - Pages Collapse Menu -->
@@ -211,6 +222,7 @@
             </div>
           </div>
         </li>
+        @endcan
 
         <!-- Nav Item - Charts -->
         {{-- <li class="nav-item">
@@ -491,7 +503,7 @@
                   aria-expanded="false"
                 >
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small"
-                    >Halo, </span
+                    {{-- >Halo, User {{Auth::user()->name ?? Auth::user()->name }}</span --}}
                   >
                   <img
                     class="img-profile rounded-circle"
@@ -536,11 +548,11 @@
           @yield('content')
 
           <!-- Footer -->
-          <div class="row col">
-              <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
+          <div class="row col justify-content-center">
+              <footer class="sticky-footer">
+                <div class="container mx-auto">
                   <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Sistem Informasi Klinik @php date('Y') @endphp </span>
+                    <span>Copyright &copy; Sistem Informasi Klinik @php echo date('Y') @endphp </span>
                   </div>
                 </div>
               </footer>
@@ -622,6 +634,7 @@
     <script src="/js/demo/chart-pie-demo.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     @yield('footer-addons')
+    @include('sweetalert::alert')
 
   </body>
 </html>

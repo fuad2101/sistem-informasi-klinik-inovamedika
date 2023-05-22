@@ -42,45 +42,36 @@
                         <thead class="thead-inverse">
                             <tr>
                                 <th scope="col">#</th>
+                                <th scope="col">NIK</th>
                                 <th scope="col">No.MR</th>
                                 <th scope="col">Tanggal Daftar</th>
                                 <th scope="col">Nama Pasien</th>
                                 <th scope="col">Tanggal Lahir</th>
                                 <th scope="col">Jenis Kelamin</th>
-                                <th scope="col">Agama</th>
-                                <th scope="col">Pendidikan</th>
-                                <th scope="col">Alamat</th>
-                                <th scope="col">Kecamatan</th>
-                                <th scope="col">Kelurahan</th>
-                                <th scope="col">Kota</th>
-                                <th scope="col">Telepon</th>
                             </tr>
                             </thead>
                             <tbody>
 
                                 @forelse ($pasiens as $pasien)
                                     <tr>
-                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$pasien->id}}</td>
+                                        <td>{{$pasien->nik}}</td>
                                         <td>{{$pasien->no_mr}}</td>
                                         <td>{{$pasien->tanggal_daftar}}</td>
                                         <td>{{$pasien->nama_pasien}}</td>
                                         <td>{{$pasien->tgl_lahir}}</td>
                                         <td>{{$pasien->jns_klm}}</td>
-                                        <td>{{$pasien->agama}}</td>
-                                        <td>{{$pasien->pendidikan}}</td>
-                                        <td>{{$pasien->alamat}}</td>
-                                        <td>{{$pasien->kecamatan}}</td>
-                                        <td>{{$pasien->kelurahan}}</td>
-                                        <td>{{$pasien->kota}}</td>
-                                        <td>{{$pasien->tel}}</td>
                                     </tr>
+
                                 @empty
                                     <td class="text-center" colspan="13">Tidak ada data</td>
                                 @endforelse
-
-
                             </tbody>
-                    </table>
+                                {{$pasiens->links()}}
+
+
+                        </table>
+
                 </div>
 
 

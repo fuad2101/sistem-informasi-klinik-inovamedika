@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\pasiens;
-use App\Models\tindakans;
-use App\Models\PasienAktif;
+use App\Models\obats;
+use App\Models\hrg_obats;
 use Illuminate\Http\Request;
 
-class tindakanController extends Controller
+class hrg_obatsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,9 @@ class tindakanController extends Controller
      */
     public function index()
     {
-        return view('bpom.tindakan.index',['tindakans'=>tindakans::all()]);
-
+        return view('bpom.obat.index',['obats'=>hrg_obats::all()]);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -26,9 +25,7 @@ class tindakanController extends Controller
      */
     public function create()
     {
-        $data = PasienAktif::all();
-        // dd($data);
-        return view('bpom.tindakan.create',['data' => $data]);
+        return view('bpom.obat.create');
     }
 
     /**
@@ -39,16 +36,15 @@ class tindakanController extends Controller
      */
     public function store(Request $request)
     {
-        tindakans::create([
-            'mr_id'=>$request->no_rm,
-            'tanggal_tindakan'=>$request->tanggal_tindakan,
-            'nama_pasien'=>$request->nama_pasien,
-            'tgl_masuk'=>$request->tgl_masuk,
-            'tindakan'=>$request->tindakan,
+        hrg_obats::create([
+            'jns_brg'=>$request->jns_brg,
+            'jns_obat'=>$request->jns_obat,
+            'nama'=>$request->nama,
+            'produsen'=>$request->produsen,
+            'harga'=>$request->harga,
         ]);
 
-        return view('bpom.tindakan.index',['tindakans'=>tindakans::all()]);
-
+        return view('bpom.obat.index',['obats'=>hrg_obats::all()]);
     }
 
     /**

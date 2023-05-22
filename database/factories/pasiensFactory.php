@@ -17,6 +17,7 @@ class pasiensFactory extends Factory
     public function definition()
     {
         return [
+            'nik' => fake()->nik(),
             'no_mr' => fake()->randomNumber(7, true),
             'tanggal_daftar'=>fake()->date(),
             'nama_pasien'=> fake()->lastName(),

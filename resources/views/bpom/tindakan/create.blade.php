@@ -17,10 +17,10 @@
                 <form action="{{route('tindakan.store')}}" method="post" class="">
                     @csrf
                 <div class="col-md-4 mb-3">
-                    <label for="no_rm" class="form-label">No.RM</label>
+                    <label for="no_rm" class="form-label">NIK - Nama Pasien</label>
                     <select class="form-control" name="no_rm" id="">
                         @forelse ($data as $item)
-                            <option value="{{$item->no_mr}}">{{$item->no_mr}} - {{$item->nama_pasien}}  </option>
+                            <option value="{{$item->nik}}">{{$item->nik}}  </option>
                         @empty
                             <option value="">No Data</option>
                         @endforelse
@@ -29,10 +29,6 @@
                 <div class="col-md-4 mb-3">
                     <label for="tanggal_tindakan" class="form-label">Tanggal Tindakan</label>
                     <input class="form-control" type="date" name="tanggal_tindakan" id="">
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label for="nama_pasien" class="form-label">Nama Pasien</label>
-                    <input class="form-control" type="text" name="nama_pasien" id="" value="">
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="tgl_masuk" class="form-label">Tanggal Masuk</label>

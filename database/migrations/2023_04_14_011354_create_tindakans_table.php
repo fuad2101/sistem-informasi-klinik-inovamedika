@@ -20,7 +20,8 @@ return new class extends Migration
             $table->date('tanggal_tindakan');
             $table->string('nama_pasien', 100);
             $table->date('tgl_masuk');
-            $table->text('tindakan');
+            $table->integer('ttl_obat')->unsigned();
+            $table->integer('ttl_tindakan')->unsigned();
             $table->timestamps();
         });
     }

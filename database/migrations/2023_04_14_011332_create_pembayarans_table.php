@@ -19,7 +19,9 @@ return new class extends Migration
             $table->string('no_rm', 25);
             $table->string('nama_pasien', 100);
             $table->string('type')->default('cash');
-            $table->integer('total')->unsigned();
+            $table->integer('ttl_tindakan')->unsigned();
+            $table->integer('ttl_obat')->unsigned();
+            $table->integer('grand_ttl')->unsigned();
             $table->timestamps();
         });
     }

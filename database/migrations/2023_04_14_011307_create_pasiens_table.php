@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('pasiens', function (Blueprint $table) {
             $table->id();
-            $table->string('no_mr', 20)->unique()->default('N/A');
+            $table->string('nik', 20)->unique();
+            $table->string('no_mr', 20)->default('N/A');
             $table->date('tanggal_daftar');
             $table->string('nama_pasien', 100);
             $table->date('tgl_lahir');

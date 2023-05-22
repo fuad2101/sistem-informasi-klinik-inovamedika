@@ -10,7 +10,7 @@
               <h1 class="h3 mb-0 text-gray-800">Tambah Data Obat</h1>
             </div>
 
-                <form action="{{route('obat.store')}}" method="post" class="">
+                <form action="{{route('hrg_obats.store')}}" method="post" class="">
                     @csrf
                 <div class="col-md-4 mb-3">
                     <label for="jns_brg" class="form-label">Jenis Barang</label>

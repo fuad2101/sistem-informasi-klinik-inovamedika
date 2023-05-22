@@ -15,4 +15,8 @@ class pasiens extends Model
         return $this->hasMany(tindakans::class);
     }
 
+    public function PasienAktif(){
+        $this->hasOne(PasienAktif::class);
+    }
+
 }

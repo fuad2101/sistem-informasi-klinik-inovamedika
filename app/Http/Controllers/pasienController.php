@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\pasiens;
+use App\Models\PasienAktif;
+use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class pasienController extends Controller
 {
@@ -14,7 +16,8 @@ class pasienController extends Controller
      */
     public function index()
     {
-        return view('bpom.pasien.index',['pasiens'=>pasiens::all()]);
+        $data = pasiens::cursorPaginate(20);
+        return view('bpom.pasien.index',['pasiens'=> $data ]);
     }
 
     /**
@@ -35,24 +38,16 @@ class pasienController extends Controller
      */
     public function store(Request $request)
     {
-        $foo = pasiens::create([
-            'no_mr'=>$request->no_mr,
-            'tanggal_daftar'=>$request->tanggal_daftar,
-            'nama_pasien'=>$request->nama_pasien,
-            'tgl_lahir'=>$request->tgl_lahir,
-            'jns_klm'=>$request->jns_klm,
-            'agama'=>$request->agama,
-            'pendidikan'=>$request->pendidikan,
-            'alamat'=>$request->alamat,
-            'kecamatan'=>$request->kecamatan,
-            'kelurahan'=>$request->kelurahan,
-            'kota'=>$request->kota,
-            'tel'=>$request->tel,
+
+        $pasien = PasienAktif::find(1)->pasiens;
+        dd($pasien);
+
+        $foo = PasienAktif::create([
+            'nik'=>$request->nik,
         ]);
 
-        // dd($foo);
 
-        return view('bpom.pasien.index',['pasiens'=>pasiens::all()]);
+        return view('bpom.tindakan.index',['tindakans'=>PasienAktif::all()]);
 
     }
 
@@ -62,9 +57,18 @@ class pasienController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $result = pasiens::where('nik',$request->nik)->get();
+
+        if (isset($result[0])) {
+            Alert::success('Data Ditemukan','Data pasien berhasil ditemukan');
+            return view('bpom.pasien.create',['result'=>$result]);
+        }else{
+            Alert::error('Data Tidak Ditemukan','Data pasien tidak ditemukan');
+            return view('bpom.pasien.create');
+        }
+        // dd($result);
     }
 
     /**
